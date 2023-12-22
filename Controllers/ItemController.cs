@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using AlugueldeTemas.Context;
 using AlugueldeTemas.Models;
 using AlugueldeTemas.Services;
 
