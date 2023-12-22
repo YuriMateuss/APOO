@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using AlugueldeTemas.Models; // Substitua "AlugueldeTemas" pelo namespace correto do seu projeto
+using AlugueldeTemas.Models; 
 using AlugueldeTemas.Services;
 
 namespace AlugueldeTemas.Controllers
@@ -11,7 +11,7 @@ namespace AlugueldeTemas.Controllers
 
         public ItemController()
         {
-            _itemService = new ItemService(); // Certifique-se de ajustar isso de acordo com a sua implementação de serviço
+            _itemService = new ItemService(); 
         }
 
         public ActionResult Index()
