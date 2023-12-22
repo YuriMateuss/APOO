@@ -1,28 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using AlugueldeTemas.Models; 
+using AlugueldeTemas.Context;
+using AlugueldeTemas.Models;
 using AlugueldeTemas.Services;
 
 namespace AlugueldeTemas.Controllers
 {
     public class ItemController : Controller
     {
-        private readonly ItemService _itemService;
+        private readonly ItemService itemService;
 
-        public ItemController()
+        public ItemController(ItemService itemService)
         {
-            _itemService = new ItemService(); 
+            this.itemService = itemService;
         }
 
         public ActionResult Index()
         {
-            List<ItemTema> itens = _itemService.ListarItens();
+            List<ItemTema> itens = itemService.ListarItens();
             return View(itens);
         }
 
         public ActionResult Details(int id)
         {
-            ItemTema item = _itemService.ObterItemPorId(id);
+            ItemTema item = itemService.ObterItemPorId(id);
 
             if (item == null)
             {
@@ -45,7 +46,7 @@ namespace AlugueldeTemas.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _itemService.GravarItem(itemTema);
+                    itemService.GravarItem(itemTema);
                     return RedirectToAction("Index");
                 }
 
@@ -59,7 +60,7 @@ namespace AlugueldeTemas.Controllers
 
         public ActionResult Edit(int id)
         {
-            ItemTema item = _itemService.ObterItemPorId(id);
+            ItemTema item = itemService.ObterItemPorId(id);
 
             if (item == null)
             {
@@ -77,7 +78,7 @@ namespace AlugueldeTemas.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _itemService.AtualizarItem(itemTema);
+                    itemService.AtualizarItem(itemTema);
                     return RedirectToAction("Index");
                 }
 
@@ -91,7 +92,7 @@ namespace AlugueldeTemas.Controllers
 
         public ActionResult Delete(int id)
         {
-            ItemTema item = _itemService.ObterItemPorId(id);
+            ItemTema item = itemService.ObterItemPorId(id);
 
             if (item == null)
             {
@@ -105,7 +106,7 @@ namespace AlugueldeTemas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            _itemService.ExcluirItem(id);
+            itemService.ExcluirItem(id);
             return RedirectToAction("Index");
         }
     }
