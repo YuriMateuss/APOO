@@ -10,38 +10,102 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 5px;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a {
+            text-decoration: none;
+            color: #2196F3;
+        }
+            a:hover {
+                color: #0D47A1;
+            }
+        .add-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .add-button:hover {
+                background-color: #45a049;
+            }
+    </style>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
+    <header>
+        <h1>YuriTemas</h1>
+    </header>
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.nome)
+                #
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.descricao)
+                Nome
+            </th>
+            <th>
+                Descrição
             </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descricao)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id=item.ItemTemaId }) |
-                @Html.ActionLink("Detalhar", "Details", new { id=item.ItemTemaId }) |
-                @Html.ActionLink("Excluir", "Delete", new { id=item.ItemTemaId })
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemTemaId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descricao)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ItemTemaId }) |
+                    @Html.ActionLink("Detalhar", "Details", new { id = item.ItemTemaId }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.ItemTemaId })
+                </td>
+            </tr>
+        }
     </table>
+    <p>
+        <button class="add-button" onclick="location.href='@Url.Action("Create")'">Adicionar Novo Item</button>
+    </p>
 </body>
 </html>

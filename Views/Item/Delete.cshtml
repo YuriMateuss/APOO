@@ -10,37 +10,95 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Delete</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            text-align: center;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        .dl-horizontal {
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        dt {
+            text-align: left;
+            padding: 8px;
+            font-weight: bold;
+        }
+
+        dd {
+            padding: 8px;
+            box-sizing: border-box;
+            margin-left: 0;
+        }
+
+        .btn {
+            background-color: #d9534f;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .btn:hover {
+                background-color: #c9302c;
+            }
+
+        .back-link {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            margin-left: 10px;
+            display: inline-block;
+        }
+
+            .back-link:hover {
+                background-color: #333;
+                color: white;
+            }
+    </style>
 </head>
 <body>
-    <h3>Are you sure you want to delete this?</h3>
+    <h3>Tem certeza que deseja excluir esse item?</h3>
     <div>
-        <h4>ItemTema</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.nome)
+                Nome:
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.nome)
             </dd>
-    
+
             <dt>
-                @Html.DisplayNameFor(model => model.descricao)
+                Descrição:
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.descricao)
             </dd>
-    
+
         </dl>
-    
-        @using (Html.BeginForm()) {
+
+        @using (Html.BeginForm())
+        {
             @Html.AntiForgeryToken()
-    
+
             <div class="form-actions no-color">
-                <input type="submit" value="Excluir" class="btn btn-default" /> |
-                @Html.ActionLink("Voltar", "Index")
+                <input type="submit" value="Excluir" class="btn" /> |
+                @Html.ActionLink("Voltar", "Index", null, new { @class = "back-link" })
             </div>
         }
     </div>
